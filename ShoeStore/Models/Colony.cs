@@ -19,7 +19,7 @@
 
         public virtual Municipality Municipality { get; set; }
 
-        //public virtual ICollection<Administrador> administradores { get; set; }
+        public virtual ICollection<Administrator> Administrators { get; set; }
 
         //public virtual ICollection<Zapateria> Zapaterias { get; set; }
 

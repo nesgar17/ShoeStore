@@ -210,10 +210,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Classes\CombosHelper.cs" />
     <Compile Include="Classes\DbHelper.cs" />
+    <Compile Include="Classes\FileHelper.cs" />
     <Compile Include="Classes\Response.cs" />
     <Compile Include="Classes\UsersHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministratorsController.cs" />
     <Compile Include="Controllers\ColoniesController.cs" />
+    <Compile Include="Controllers\GenericController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MunicipalitiesController.cs" />
@@ -223,6 +226,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Colony.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -306,9 +310,16 @@
     <Content Include="Views\Colonies\Details.cshtml" />
     <Content Include="Views\Colonies\Edit.cshtml" />
     <Content Include="Views\Colonies\Index.cshtml" />
+    <Content Include="Views\Administrators\Create.cshtml" />
+    <Content Include="Views\Administrators\Delete.cshtml" />
+    <Content Include="Views\Administrators\Details.cshtml" />
+    <Content Include="Views\Administrators\Edit.cshtml" />
+    <Content Include="Views\Administrators\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Photo\" />
+    <Folder Include="Views\Generic\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

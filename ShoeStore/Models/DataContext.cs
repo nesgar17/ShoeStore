@@ -22,5 +22,7 @@
         public System.Data.Entity.DbSet<ShoeStore.Models.Municipality> Municipalities { get; set; }
 
         public System.Data.Entity.DbSet<ShoeStore.Models.Colony> Colonies { get; set; }
+
+        public System.Data.Entity.DbSet<ShoeStore.Models.Administrator> Administrators { get; set; }
     }
 }
