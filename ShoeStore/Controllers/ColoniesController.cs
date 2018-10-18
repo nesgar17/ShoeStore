@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using ShoeStore.Models;
-
-namespace ShoeStore.Controllers
+﻿namespace ShoeStore.Controllers
 {
+    using ShoeStore.Classes;
+    using ShoeStore.Models;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
+
+
     public class ColoniesController : Controller
     {
         private DataContext db = new DataContext();
@@ -39,25 +37,28 @@ namespace ShoeStore.Controllers
         // GET: Colonies/Create
         public ActionResult Create()
         {
-            ViewBag.IdMunicipality = new SelectList(db.Municipalities, "IdMunicipality", "Description");
+            ViewBag.IdMunicipality = new SelectList(CombosHelper.GetMunicipalities(), "IdMunicipality", "Description");
             return View();
         }
 
-        // POST: Colonies/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdColony,Description,IdMunicipality")] Colony colony)
+        public ActionResult Create(Colony colony)
         {
             if (ModelState.IsValid)
             {
                 db.Colonies.Add(colony);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var response= DbHelper.SaveChanges(db);
+                if (response.Successfully)
+                {
+                    return RedirectToAction("Index");
+                }
+                ModelState.AddModelError(string.Empty, response.Message);
+               
             }
 
-            ViewBag.IdMunicipality = new SelectList(db.Municipalities, "IdMunicipality", "Description", colony.IdMunicipality);
+            ViewBag.IdMunicipality = new SelectList(CombosHelper.GetMunicipalities(), "IdMunicipality", "Description", colony.IdMunicipality);
             return View(colony);
         }
 
@@ -73,24 +74,27 @@ namespace ShoeStore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdMunicipality = new SelectList(db.Municipalities, "IdMunicipality", "Description", colony.IdMunicipality);
+            ViewBag.IdMunicipality = new SelectList(CombosHelper.GetMunicipalities(), "IdMunicipality", "Description", colony.IdMunicipality);
             return View(colony);
         }
 
-        // POST: Colonies/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdColony,Description,IdMunicipality")] Colony colony)
+        public ActionResult Edit(Colony colony)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(colony).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var response = DbHelper.SaveChanges(db);
+                if (response.Successfully)
+                {
+
+                    return RedirectToAction("Index");
+                }
+                ModelState.AddModelError(string.Empty, response.Message);
             }
-            ViewBag.IdMunicipality = new SelectList(db.Municipalities, "IdMunicipality", "Description", colony.IdMunicipality);
+            ViewBag.IdMunicipality = new SelectList(CombosHelper.GetMunicipalities(), "IdMunicipality", "Description", colony.IdMunicipality);
             return View(colony);
         }
 
@@ -116,8 +120,15 @@ namespace ShoeStore.Controllers
         {
             Colony colony = db.Colonies.Find(id);
             db.Colonies.Remove(colony);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var response=DbHelper.SaveChanges(db);
+            if (response.Successfully)
+            {
+                return RedirectToAction("Index");
+
+            }
+            ModelState.AddModelError(string.Empty, response.Message);
+
+            return View(); 
         }
 
         protected override void Dispose(bool disposing)

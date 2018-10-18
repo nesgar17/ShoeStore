@@ -13,65 +13,65 @@
 
         private static DataContext db = new DataContext();
 
-        //public static List<State> GetStates()
-        //{
-        //    var Estados = db.Estadoes.ToList();
-        //    Estados.Add(new Estado
-        //    {
-        //        IdEstado = 0,
-        //        Descripcion = "[--Selecciona un Estado--]",
-        //    });
+        public static List<State> GetStates()
+        {
+            var states = db.States.ToList();
+            states.Add(new State
+            {
+                IdState = 0,
+                Description = "[--Selecciona un Estado--]",
+            });
 
-        //    return Estados.OrderBy(e => e.Descripcion).ToList();
-        //}
+            return states.OrderBy(e => e.Description).ToList();
+        }
 
-        //public static List<Municipio> GetMunicipios()
-        //{
-        //    var Municipio = db.Municipios.ToList();
-        //    Municipio.Add(new Municipio
-        //    {
-        //        IdMunicipio = 0,
-        //        Descripcion = "[--Selecciona un Municipio--]",
-        //    });
+        public static List<Municipality> GetMunicipalities()
+        {
+            var municipalities = db.Municipalities.ToList();
+            municipalities.Add(new Municipality
+            {
+                IdMunicipality = 0,
+                Description = "[--Selecciona un Municipio--]",
+            });
 
-        //    return Municipio.OrderBy(e => e.Descripcion).ToList();
-        //}
-        //public static List<Municipio> GetMunicipios(int idEstado)
-        //{
-        //    var Municipio = db.Municipios.Where(m => m.IdEstado == idEstado).ToList();
-        //    Municipio.Add(new Municipio
-        //    {
-        //        IdMunicipio = 0,
-        //        Descripcion = "[--Selecciona un Municipio--]",
-        //    });
+            return municipalities.OrderBy(e => e.Description).ToList();
+        }
+        public static List<Municipality> GetMunicipalities(int idState)
+        {
+            var municipalities = db.Municipalities.Where(m => m.IdState == idState).ToList();
+            municipalities.Add(new Municipality
+            {
+                IdMunicipality = 0,
+                Description = "[--Selecciona un Municipio--]",
+            });
 
-        //    return Municipio.OrderBy(e => e.Descripcion).ToList();
-        //}
+            return municipalities.OrderBy(e => e.Description).ToList();
+        }
 
 
-        //public static List<Colonia> GetColonias()
-        //{
-        //    var Colonia = db.Colonias.ToList();
-        //    Colonia.Add(new Colonia
-        //    {
-        //        IdColonia = 0,
-        //        Descripcion = "[--Selecciona una Colonia--]",
-        //    });
+        public static List<Colony> GetColonies()
+        {
+            var colonies = db.Colonies.ToList();
+            colonies.Add(new Colony
+            {
+                IdColony = 0,
+                Description = "[--Selecciona una Colonia--]",
+            });
 
-        //    return Colonia.OrderBy(e => e.Descripcion).ToList();
-        //}
+            return colonies.OrderBy(e => e.Description).ToList();
+        }
 
-        //public static List<Colonia> GetColonias(int idMunicipio)
-        //{
-        //    var Colonia = db.Colonias.Where(m => m.IdMunicipio == idMunicipio).ToList();
-        //    Colonia.Add(new Colonia
-        //    {
-        //        IdColonia = 0,
-        //        Descripcion = "[--Selecciona una Colonia--]",
-        //    });
+        public static List<Colony> GetColonies(int idMunicipality)
+        {
+            var colonies = db.Colonies.Where(m => m.IdMunicipality == idMunicipality).ToList();
+            colonies.Add(new Colony
+            {
+                IdColony = 0,
+                Description = "[--Selecciona una Colonia--]",
+            });
 
-        //    return Colonia.OrderBy(e => e.Descripcion).ToList();
-        //}
+            return colonies.OrderBy(e => e.Description).ToList();
+        }
 
         public void Dispose()
         {

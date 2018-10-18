@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using ShoeStore.Models;
-
-namespace ShoeStore.Controllers
+﻿namespace ShoeStore.Controllers
 {
+    using ShoeStore.Models;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
+
+
     public class StatesController : Controller
     {
         private DataContext db = new DataContext();
@@ -46,7 +43,7 @@ namespace ShoeStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdState,Description")] State state)
+        public ActionResult Create(State state)
         {
             if (ModelState.IsValid)
             {
