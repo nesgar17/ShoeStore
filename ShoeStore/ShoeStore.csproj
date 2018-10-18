@@ -211,8 +211,11 @@
     <Compile Include="Classes\CombosHelper.cs" />
     <Compile Include="Classes\UsersHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ColoniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MunicipalitiesController.cs" />
+    <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -286,6 +289,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\States\Create.cshtml" />
+    <Content Include="Views\States\Delete.cshtml" />
+    <Content Include="Views\States\Details.cshtml" />
+    <Content Include="Views\States\Edit.cshtml" />
+    <Content Include="Views\States\Index.cshtml" />
+    <Content Include="Views\Municipalities\Create.cshtml" />
+    <Content Include="Views\Municipalities\Delete.cshtml" />
+    <Content Include="Views\Municipalities\Details.cshtml" />
+    <Content Include="Views\Municipalities\Edit.cshtml" />
+    <Content Include="Views\Municipalities\Index.cshtml" />
+    <Content Include="Views\Colonies\Create.cshtml" />
+    <Content Include="Views\Colonies\Delete.cshtml" />
+    <Content Include="Views\Colonies\Details.cshtml" />
+    <Content Include="Views\Colonies\Edit.cshtml" />
+    <Content Include="Views\Colonies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

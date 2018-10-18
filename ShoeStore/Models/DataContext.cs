@@ -17,6 +17,10 @@
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
+        public System.Data.Entity.DbSet<ShoeStore.Models.State> States { get; set; }
 
+        public System.Data.Entity.DbSet<ShoeStore.Models.Municipality> Municipalities { get; set; }
+
+        public System.Data.Entity.DbSet<ShoeStore.Models.Colony> Colonies { get; set; }
     }
 }
