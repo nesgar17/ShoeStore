@@ -15,6 +15,7 @@ namespace ShoeStore.Models
         [Display(Name = "Nombre")]
         public string Description { get; set; }
 
+
         public virtual ICollection<Municipality> Municipalities { get; set; }
 
         public virtual ICollection<Administrator> Administrators { get; set; }

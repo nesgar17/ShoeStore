@@ -5,16 +5,21 @@
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
-
+    using PagedList;
+    using System;
+    using System.Collections.Generic;
 
     public class StatesController : Controller
     {
         private DataContext db = new DataContext();
 
         // GET: States
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.States.ToList());
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+            var states = db.States.ToList();
+            return View(states.ToPagedList(pageNumber,pageSize));
         }
 
         // GET: States/Details/5
