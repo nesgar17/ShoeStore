@@ -6,7 +6,7 @@
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
-
+    using PagedList;
 
     public class MunicipalitiesController : Controller
     {
@@ -15,10 +15,13 @@
         private DataContext db = new DataContext();
 
         // GET: Municipalities
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var municipalities = db.Municipalities.Include(m => m.State);
-            return View(municipalities.ToList());
+
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+            var municipalities = db.Municipalities.Include(m => m.State).ToList();
+            return View(municipalities.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Municipalities/Details/5

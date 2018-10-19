@@ -15,6 +15,8 @@ namespace ShoeStore.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private DataContext db = new DataContext();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -27,6 +29,17 @@ namespace ShoeStore.Controllers
             UserManager = userManager;
             SignInManager = signInManager;
         }
+
+        public void Logo(LoginViewModel model)
+        {
+            var user = db.Administrators.Where(u => u.Email == model.Email).FirstOrDefault();
+            if (user != null)
+            {
+                Session["Logo"] = user.Photo;
+               
+            }
+        }
+
 
         public ApplicationSignInManager SignInManager
         {
@@ -79,6 +92,7 @@ namespace ShoeStore.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    Logo(model);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -392,6 +406,7 @@ namespace ShoeStore.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session["Logo"] = null;
             return RedirectToAction("Index", "Home");
         }
 
@@ -419,7 +434,7 @@ namespace ShoeStore.Controllers
                     _signInManager = null;
                 }
             }
-
+            db.Dispose();
             base.Dispose(disposing);
         }
 
