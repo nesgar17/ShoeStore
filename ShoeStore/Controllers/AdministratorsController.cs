@@ -2,6 +2,7 @@
 {
     using ShoeStore.Classes;
     using ShoeStore.Models;
+    using System;
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
@@ -54,6 +55,8 @@
             {
                 db.Administrators.Add(administrator);
                 var response = DbHelper.SaveChanges(db);
+               
+                
                 UsersHelper.CreateUserASP(administrator.Email, "Admin", administrator.Password);
                 if (administrator.PhotoFile != null)
                 {
@@ -66,6 +69,7 @@
                         var pic = string.Format("{0}/{1}", folder, file);
                         administrator.Photo = pic;
                         db.Entry(administrator).State = EntityState.Modified;
+                        RegisterUser(administrator);
                         db.SaveChanges();
 
                     }
@@ -83,6 +87,27 @@
             ViewBag.IdMunicipality = new SelectList(CombosHelper.GetMunicipalities(administrator.IdMunicipality), "IdMunicipality", "Description", administrator.IdMunicipality);
             ViewBag.IdState = new SelectList(CombosHelper.GetStates(), "IdState", "Description", administrator.IdState);
             return View(administrator);
+        }
+
+        private void RegisterUser(Administrator administrator)
+        {
+            var user = new User
+            {
+                Address = administrator.Address,
+                BirthDay = administrator.BirthDay,
+                Email = administrator.Email,
+                FirstName = administrator.FirstName,
+                IdColony = administrator.IdColony,
+                IdMunicipality =administrator.IdMunicipality,
+                IdState = administrator.IdState,
+                LastName = administrator.LastName,
+                Password = administrator.Password,
+                Phone = administrator.Phone,
+                Photo = administrator.Photo,
+                
+            };
+            db.Users.Add(user);
+            db.SaveChanges();
         }
 
         // GET: Administrators/Edit/5

@@ -1,19 +1,16 @@
-﻿
-
-namespace ShoeStore.Models
+﻿namespace ShoeStore.Models
 {
-
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
     using System.Web;
 
-    public class Administrator
+    public class Owner
     {
+
         [Key]
-        public int AdministratorId { get; set; }
+        public int OwnerId { get; set; }
 
         [Required(ErrorMessage = "EL campo {0} es obligatorio")]
         [StringLength(60, ErrorMessage = "El campo {0} debe tener minimo {1} y maximo {2} caracteres", MinimumLength = 3)]
@@ -23,6 +20,11 @@ namespace ShoeStore.Models
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [Display(Name = "Apellidos")]
         public string LastName { get; set; }
+        
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Fecha de Nacimiento")]
+        [DataType(DataType.Date)]
+        public DateTime BirthDay { get; set; }
 
         public int IdState { get; set; }
 
@@ -40,16 +42,8 @@ namespace ShoeStore.Models
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "El campo {0} es obligatorio")]
-        [Display(Name = "Fecha de Nacimiento")]
-        [DataType(DataType.Date)]
-        public DateTime BirthDay { get; set; }
-
         [DataType(DataType.ImageUrl)]
         public string Photo { get; set; }
-
-        [NotMapped]
-        public HttpPostedFileBase PhotoFile { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         [Display(Name = "Correo Electronico")]
@@ -61,12 +55,14 @@ namespace ShoeStore.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [NotMapped]
+        public HttpPostedFileBase PhotoFile { get; set; }
+
         public virtual State State { get; set; }
 
         public virtual Municipality Municipality { get; set; }
 
         public virtual Colony Colony { get; set; }
-
 
 
     }

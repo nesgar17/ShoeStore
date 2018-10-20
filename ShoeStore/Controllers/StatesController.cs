@@ -6,8 +6,6 @@
     using System.Net;
     using System.Web.Mvc;
     using PagedList;
-    using System;
-    using System.Collections.Generic;
 
     public class StatesController : Controller
     {

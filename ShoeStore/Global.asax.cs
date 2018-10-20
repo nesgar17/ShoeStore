@@ -23,6 +23,7 @@
         private void checkRolesAndSuperUser()
         {
             UsersHelper.CheckRole("Admin");
+            UsersHelper.CheckRole("Owner");            
             UsersHelper.CheckRole("Cliente");
             UsersHelper.CheckRole("Directivo");
             UsersHelper.CheckRole("Gerente");

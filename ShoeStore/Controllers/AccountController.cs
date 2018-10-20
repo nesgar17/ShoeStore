@@ -15,7 +15,7 @@ namespace ShoeStore.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private DataContext db = new DataContext();
+       private DataContext db = new DataContext();
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -32,15 +32,15 @@ namespace ShoeStore.Controllers
 
         public void Logo(LoginViewModel model)
         {
-            var user = db.Administrators.Where(u => u.Email == model.Email).FirstOrDefault();
-            if (user != null)
+           var user = db.Users.Where(u => u.Email == model.Email).FirstOrDefault();
+           if ( user!= null)
             {
                 Session["Logo"] = user.Photo;
-               
             }
+  
         }
 
-
+     
         public ApplicationSignInManager SignInManager
         {
             get

@@ -24,7 +24,9 @@ namespace ShoeStore.Models
 
         public virtual ICollection<Administrator> Administrators { get; set; }
 
-        //public virtual ICollection<Zapateria> Zapaterias { get; set; }
+        public virtual ICollection<Owner> Owners { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
 
     }
 }
