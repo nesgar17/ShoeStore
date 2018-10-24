@@ -1,6 +1,4 @@
-﻿
-
-namespace ShoeStore.Models
+﻿namespace ShoeStore.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -19,6 +17,8 @@ namespace ShoeStore.Models
         public virtual ICollection<Municipality> Municipalities { get; set; }
 
         public virtual ICollection<Administrator> Administrators { get; set; }
+
+      
 
         public virtual ICollection<Owner> Owners { get; set; }
 

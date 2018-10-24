@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ShoeStore.Models.Zapateria>
+
+@{
+    ViewBag.Title = "Inicio";
+}
+
+<h2>Registra una Zapateria</h2>
+
+<p>
+    @Html.ActionLink("Registrar", "Create", new { }, new { @class= "btn btn-primary"})
+</p>
+<br />
+@if (Model.Count() == 0)
+{
+    <h4>No hay zapaterias registradas</h4>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th >
+                @Html.DisplayNameFor(model => model.FullAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.FechaCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td class="col-lg-2">
+                    @Html.DisplayFor(modelItem => item.FullAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaCreacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Logo))
+                    {
+                        <img src="@Url.Content(item.Logo)" alt="Image" style="width:70px;height:70px;max-width:70%; height:auto;" />
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.ZapateriaId }, new { @class = "btn btn-info glyphicon glyphicon-pencil" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.ZapateriaId }, new { @class = "btn btn-warning glyphicon glyphicon-list-alt" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.ZapateriaId }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+}  

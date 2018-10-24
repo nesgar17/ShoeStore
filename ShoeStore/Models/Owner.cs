@@ -64,6 +64,10 @@
 
         public virtual Colony Colony { get; set; }
 
+        public virtual ICollection<Account> Accounts { get; set; }
+
+      
+
 
     }
 }

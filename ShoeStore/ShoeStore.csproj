@@ -222,6 +222,7 @@
     <Compile Include="Classes\UsersHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministratorsController.cs" />
+    <Compile Include="Controllers\BitacorasController.cs" />
     <Compile Include="Controllers\ColoniesController.cs" />
     <Compile Include="Controllers\GenericController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -229,12 +230,15 @@
     <Compile Include="Controllers\MunicipalitiesController.cs" />
     <Compile Include="Controllers\OwnersController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
+    <Compile Include="Controllers\ZapateriasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Administrator.cs" />
+    <Compile Include="Models\Bitacora.cs" />
     <Compile Include="Models\Colony.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -243,6 +247,7 @@
     <Compile Include="Models\Owner.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Zapateria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -333,9 +338,16 @@
     <Content Include="Views\Owners\Edit.cshtml" />
     <Content Include="Views\Owners\Index.cshtml" />
     <Content Include="Views\Owners\Message.cshtml" />
+    <Content Include="Views\Zapaterias\Create.cshtml" />
+    <Content Include="Views\Zapaterias\Delete.cshtml" />
+    <Content Include="Views\Zapaterias\Details.cshtml" />
+    <Content Include="Views\Zapaterias\Edit.cshtml" />
+    <Content Include="Views\Zapaterias\Index.cshtml" />
+    <Content Include="Views\Bitacoras\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Logos\" />
     <Folder Include="Content\Photo\" />
     <Folder Include="Views\Generic\" />
   </ItemGroup>

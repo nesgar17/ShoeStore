@@ -77,12 +77,13 @@
                 }
                 if (response.Successfully)
                 {
+                    DbHelper.InsertBitacora("Create", "Administrator", User.Identity.Name, db);
                     return RedirectToAction("Index");
 
                 }
                 ModelState.AddModelError(string.Empty, response.Message);
             }
-
+             
             ViewBag.IdColony = new SelectList(CombosHelper.GetColonies(administrator.IdColony), "IdColony", "Description", administrator.IdColony);
             ViewBag.IdMunicipality = new SelectList(CombosHelper.GetMunicipalities(administrator.IdMunicipality), "IdMunicipality", "Description", administrator.IdMunicipality);
             ViewBag.IdState = new SelectList(CombosHelper.GetStates(), "IdState", "Description", administrator.IdState);

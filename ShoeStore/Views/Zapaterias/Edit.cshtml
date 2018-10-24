@@ -1,41 +1,43 @@
-﻿@model ShoeStore.Models.Owner
+﻿@model ShoeStore.Models.Zapateria
 
 @{
-    ViewBag.Title = "Registrar";
+    ViewBag.Title = "Editar";
 }
 
-<h2>Create</h2>
+<h2>Datos a Editar</h2>
 
-
-@using (Html.BeginForm("Create", "Owners", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Zapaterias", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Owner</h4>
+    <h4>Zapateria</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ZapateriaId)
+    @Html.HiddenFor(model => model.FechaCreacion)
+
     <div class="form-group">
-        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Descritcion, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Descritcion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Descritcion, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.FechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.FechaCreacion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FechaCreacion, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -80,16 +82,6 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.PhotoFile, "Foto", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <span class="btn btn-primary btn-file">
-
-                @Html.TextBoxFor(model => model.PhotoFile, new { type = "file" })
-            </span>
-        </div>
-    </div>
-
-    <div class="form-group">
         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
@@ -98,35 +90,19 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.LogoFile, "Foto", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            <span class="btn btn-success btn-file">
+
+                @Html.TextBoxFor(model => model.LogoFile, new { type = "file" })
+            </span>
         </div>
     </div>
-
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Registrar" class="btn btn-primary" />
+            <input type="submit" value="Guardar" class="btn btn-primary" />
             @Html.ActionLink("Cancelar", "Index", new { }, new { @class = "btn btn-success" })
-
         </div>
     </div>
 </div>
-}
-
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-
-    <script type="text/javascript">
-        var Url = '@Url.Action("GetMunicipalities", "Generic")';
-
-        var Urlc = '@Url.Action("GetColonies", "Generic")';
-
-
-
-
-    </script>
 }

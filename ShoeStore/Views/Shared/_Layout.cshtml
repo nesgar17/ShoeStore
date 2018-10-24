@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title --ShoeStore--</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -26,16 +26,31 @@
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Geografía<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Estados", "Index", "States")</li>
-                            <li>@Html.ActionLink("Municipios", "Index", "Municipalities")</li>
-                            <li>@Html.ActionLink("Colonias", "Index", "Colonies")</li>
-                        </ul>
-                    </li>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Administradores", "Index", "Administrators")</li>
+                        <li>@Html.ActionLink("Propietarios", "Index", "Owners")</li>
+                        <li>@Html.ActionLink("Bitacora", "Index", "Bitacoras")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Geografía<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Estados", "Index", "States")</li>
+                                <li>@Html.ActionLink("Municipios", "Index", "Municipalities")</li>
+                                <li>@Html.ActionLink("Colonias", "Index", "Colonies")</li>
+                            </ul>
+                        </li>
 
 
+                    }
+
+
+                    @if (User.IsInRole("Owner"))
+                    {
+                        <li>@Html.ActionLink("Zapaterias", "Index", "Zapaterias")</li>
+
+
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -45,7 +60,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year ShoeStore by Nesgar</p>
         </footer>
     </div>
 

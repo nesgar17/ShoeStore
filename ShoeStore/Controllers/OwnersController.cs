@@ -57,10 +57,9 @@
             {
                 db.Owners.Add(owner);
                 var response = DbHelper.SaveChanges(db);
-                UsersHelper.CreateUserASP(owner.Email, "Admin", owner.Password);
+                UsersHelper.CreateUserASP(owner.Email, "Owner", owner.Password);
                 if (owner.PhotoFile != null)
                 {
-
                     var folder = "~/Content/Photo";
                     var file = string.Format("{0}{1}.jpg", owner.OwnerId,owner.FirstName);
                     var responsefile = FileHelper.UploadPhoto(owner.PhotoFile, folder, file);
@@ -71,12 +70,12 @@
                         db.Entry(owner).State = EntityState.Modified;
                         RegisterUser(owner);
                         db.SaveChanges();
-
                     }
 
                 }
                 if (response.Successfully)
                 {
+                    DbHelper.InsertBitacora("Create", "Owners", User.Identity.Name, db);
                     return RedirectToAction("Message");
 
                 }

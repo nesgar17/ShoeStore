@@ -37,5 +37,24 @@
             }
 
         }
+
+
+        public static void InsertBitacora(string accion, string table, string user, DataContext db)
+        {
+
+            var bitacora = new Bitacora
+            {
+                Accion = accion,
+                Table = table,
+                User = user,
+                DateofInsert = DateTime.Now,
+
+            };
+
+            db.Bitacoras.Add(bitacora);
+            db.SaveChanges();
+
+        }
+
     }
 }

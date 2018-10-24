@@ -29,5 +29,10 @@
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Zapateria> Zapaterias { get; set; }
+
+        public DbSet<Bitacora> Bitacoras { get; set; }
+
+
     }
 }
